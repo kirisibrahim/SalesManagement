@@ -1,0 +1,17 @@
+D:\SalesManagement\SalesManagement.DataAccess\bin\Debug\net9.0\SalesManagement.DataAccess.deps.json
+D:\SalesManagement\SalesManagement.DataAccess\bin\Debug\net9.0\SalesManagement.DataAccess.runtimeconfig.json
+D:\SalesManagement\SalesManagement.DataAccess\bin\Debug\net9.0\SalesManagement.DataAccess.dll
+D:\SalesManagement\SalesManagement.DataAccess\bin\Debug\net9.0\SalesManagement.DataAccess.pdb
+D:\SalesManagement\SalesManagement.DataAccess\bin\Debug\net9.0\SalesManagement.Entities.dll
+D:\SalesManagement\SalesManagement.DataAccess\bin\Debug\net9.0\SalesManagement.Entities.pdb
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.csproj.AssemblyReference.cache
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.AssemblyInfoInputs.cache
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.AssemblyInfo.cs
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.csproj.CoreCompileInputs.cache
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesMan.CAA102E2.Up2Date
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.dll
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\refint\SalesManagement.DataAccess.dll
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.pdb
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.genruntimeconfig.cache
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\ref\SalesManagement.DataAccess.dll

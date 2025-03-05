@@ -1,0 +1,17 @@
+D:\SalesManagement\SalesManagement.Business\bin\Debug\net9.0\SalesManagement.Business.deps.json
+D:\SalesManagement\SalesManagement.Business\bin\Debug\net9.0\SalesManagement.Business.dll
+D:\SalesManagement\SalesManagement.Business\bin\Debug\net9.0\SalesManagement.Business.pdb
+D:\SalesManagement\SalesManagement.Business\bin\Debug\net9.0\SalesManagement.DataAccess.dll
+D:\SalesManagement\SalesManagement.Business\bin\Debug\net9.0\SalesManagement.Entities.dll
+D:\SalesManagement\SalesManagement.Business\bin\Debug\net9.0\SalesManagement.DataAccess.pdb
+D:\SalesManagement\SalesManagement.Business\bin\Debug\net9.0\SalesManagement.Entities.pdb
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.csproj.AssemblyReference.cache
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.AssemblyInfoInputs.cache
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.AssemblyInfo.cs
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.csproj.CoreCompileInputs.cache
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesMan.745B8478.Up2Date
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.dll
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\refint\SalesManagement.Business.dll
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.pdb
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\ref\SalesManagement.Business.dll

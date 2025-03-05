@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "v5bwecWLuz2PPTWPxINwm+irAZhzEZbeu4o8P35SS7A=",
+  "Source": "SalesManagement.WebAPI",
+  "BasePath": "_content/SalesManagement.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
