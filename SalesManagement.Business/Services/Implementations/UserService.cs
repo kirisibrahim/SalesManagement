@@ -26,7 +26,18 @@ namespace SalesManagement.Business.Services.Implementations
         public async Task<IEnumerable<UserDto>> GetAllAsync()
         {
             var users = await _unitOfWork.UserRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<UserDto>>(users);
+
+            // Kullanıcıların her birini dönüştürüp RoleName'i ekleyelim
+            var userDtos = _mapper.Map<IEnumerable<UserDto>>(users);
+
+            foreach (var userDto in userDtos)
+            {
+                // RoleId'yi alıp RoleName olarak ayarlıyoruz
+                var role = await _unitOfWork.RoleRepository.GetByIdAsync(userDto.RoleId);
+                userDto.RoleName = role?.Name ?? "Bilinmiyor";  // Eğer rol bulunamazsa "Bilinmiyor" olarak ayarla
+            }
+
+            return userDtos;
         }
 
         public async Task<UserDto> GetByIdAsync(int id)
@@ -35,8 +46,16 @@ namespace SalesManagement.Business.Services.Implementations
             if (user == null)
                 throw new NotFoundException("Kullanıcı bulunamadı.");
 
-            return _mapper.Map<UserDto>(user);
+            var userDto = _mapper.Map<UserDto>(user);
+
+            // RoleName'i dolduruyoruz
+            var role = await _unitOfWork.RoleRepository.GetByIdAsync(userDto.RoleId);
+            userDto.RoleName = role?.Name ?? "Bilinmiyor";  // Eğer rol bulunamazsa "Bilinmiyor" olarak ayarla
+
+            return userDto;
         }
+
+
 
         public async Task<UserDto> CreateAsync(UserDto userDto)
         {
@@ -57,14 +76,23 @@ namespace SalesManagement.Business.Services.Implementations
             {
                 var role = await _unitOfWork.RoleRepository.GetByIdAsync(user.RoleId);
                 if (role == null)
-                    throw new NotFoundException("Rol bulunamadı."); // Eğer verilen rolId yanlışsa hata fırlat
+                    throw new NotFoundException("Rol bulunamadı."); // Eğer verilen RoleId yanlışsa hata fırlat
             }
 
             await _unitOfWork.UserRepository.AddAsync(user);
             await _unitOfWork.CompleteAsync();
 
-            return _mapper.Map<UserDto>(user);
+            // Kullanıcı DTO'sunu oluştur
+            var createdUserDto = _mapper.Map<UserDto>(user);
+
+            // Kullanıcının rolünü veritabanından çek ve RoleName'i ata
+            var assignedRole = await _unitOfWork.RoleRepository.GetByIdAsync(user.RoleId);
+            if (assignedRole != null)
+                createdUserDto.RoleName = assignedRole.Name; // DTO içindeki RoleName alanını doldur
+
+            return createdUserDto;
         }
+
 
 
 
@@ -85,7 +113,7 @@ namespace SalesManagement.Business.Services.Implementations
             return _mapper.Map<UserDto>(user);
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var user = await _unitOfWork.UserRepository.GetByIdAsync(id);
             if (user == null)
@@ -108,8 +136,10 @@ namespace SalesManagement.Business.Services.Implementations
             // Kullanıcı bilgilerini ve rolünü al
             return new UserDto
             {
+                Id = user.Id,
                 Username = user.Username,
                 RoleId = user.RoleId,
+                RoleName = user.Role.Name,
                 Role = new RoleDto
                 {
                     Id = user.Role.Id,
@@ -118,5 +148,9 @@ namespace SalesManagement.Business.Services.Implementations
             };
         }
 
+        public Task<UserDto> GetUserByIdAsync(int userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

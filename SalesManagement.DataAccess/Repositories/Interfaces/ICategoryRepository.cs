@@ -11,8 +11,8 @@ namespace SalesManagement.DataAccess.Repositories.Interfaces
     {
         Task<Category?> GetByIdAsync(int id);
         Task<IEnumerable<Category>> GetAllAsync();
-        Task AddAsync(Category category);
-        Task UpdateAsync(Category category);
-        Task DeleteAsync(int id);
+        System.Threading.Tasks.Task AddAsync(Category category);
+        System.Threading.Tasks.Task UpdateAsync(Category category);
+        System.Threading.Tasks.Task DeleteAsync(int id);
     }
 }

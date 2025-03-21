@@ -16,10 +16,6 @@ namespace SalesManagement.Business.Validators
                 .NotEmpty().WithMessage("Kullanıcı ismi boş olamaz.")
                 .MaximumLength(20).WithMessage("Kullanıcı adı en fazla 20 karakter olabilir.");
 
-            RuleFor(x => x.Email)
-                .NotEmpty().WithMessage("E-posta boş olamaz.")
-                .EmailAddress().WithMessage("Geçerli bir e-posta adresi giriniz.");
-
             RuleFor(x => x.PasswordHash)
                 .NotEmpty().WithMessage("Şifre boş olamaz.")
                 .MinimumLength(6).WithMessage("Şifre en az 6 karakter olmalıdır.");

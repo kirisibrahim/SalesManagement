@@ -69,7 +69,7 @@ namespace SalesManagement.Business.Services.Implementations
             return _mapper.Map<SupplierDto>(supplier);
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var supplier = await _unitOfWork.SupplierRepository.GetByIdAsync(id);
             if (supplier == null)

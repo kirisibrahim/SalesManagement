@@ -11,8 +11,8 @@ namespace SalesManagement.DataAccess.Repositories.Interfaces
     {
         Task<Role> GetByIdAsync(int id);
         Task<IEnumerable<Role>> GetAllAsync();
-        Task AddAsync(Role role);
-        Task UpdateAsync(Role role);
-        Task DeleteAsync(int id);
+        System.Threading.Tasks.Task AddAsync(Role role);
+        System.Threading.Tasks.Task UpdateAsync(Role role);
+        System.Threading.Tasks.Task DeleteAsync(int id);
     }
 }

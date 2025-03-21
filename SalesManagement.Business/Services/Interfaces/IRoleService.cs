@@ -14,6 +14,6 @@ namespace SalesManagement.Business.Services.Interfaces
         Task<RoleDto> GetByIdAsync(int id);
         Task<RoleDto> CreateAsync(RoleDto roleDto);
         Task<RoleDto> UpdateAsync(RoleDto roleDto);
-        Task DeleteAsync(int id);
+        System.Threading.Tasks.Task DeleteAsync(int id);
     }
 }

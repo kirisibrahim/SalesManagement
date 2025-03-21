@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using SalesManagement.DataAccess.Context;
 using SalesManagement.DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -37,18 +33,18 @@ namespace SalesManagement.DataAccess.Repositories.Implementations
             return await _dbSet.Where(predicate).ToListAsync();
         }
 
-        public async Task AddAsync(T entity)
+        public async System.Threading.Tasks.Task AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
         }
 
-        public async Task UpdateAsync(T entity)
+        public async System.Threading.Tasks.Task UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var entity = await _dbSet.FindAsync(id);
             if (entity != null)
@@ -69,5 +65,11 @@ namespace SalesManagement.DataAccess.Repositories.Implementations
         {
             return await _context.Set<Role>().FirstOrDefaultAsync(r => r.Name == roleName);
         }
+
+        public async Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _context.Set<T>().Where(predicate).ToListAsync();
+        }
+
     }
 }

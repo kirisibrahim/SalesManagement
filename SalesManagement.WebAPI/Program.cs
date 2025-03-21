@@ -41,6 +41,8 @@ builder.Services.AddValidatorsFromAssemblyContaining<SaleValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<StockMovementValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<SupplierValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<UserValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<TasksTaskValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateTasksTaskValidator>();
 
 // Servisler
 builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -51,6 +53,8 @@ builder.Services.AddScoped<IStockMovementService, StockMovementService>();
 builder.Services.AddScoped<ISupplierService, SupplierService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ITasksTaskService, TasksTaskService>();
+
 
 // Repository'ler
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -61,6 +65,7 @@ builder.Services.AddScoped<ISaleRepository, SaleRepository>();
 builder.Services.AddScoped<IStockMovementRepository, StockMovementRepository>();
 builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITasksTaskRepository, TasksTaskRepository>();
 
 // UnitOfWork
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -89,6 +94,15 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin() // Tüm originler (*)
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -96,11 +110,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseCors("AllowAll");
 }
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
 app.Run();

@@ -6,6 +6,7 @@ D:\SalesManagement\SalesManagement.Entities\obj\Debug\net9.0\SalesManagement.Ent
 D:\SalesManagement\SalesManagement.Entities\obj\Debug\net9.0\SalesManagement.Entities.AssemblyInfoInputs.cache
 D:\SalesManagement\SalesManagement.Entities\obj\Debug\net9.0\SalesManagement.Entities.AssemblyInfo.cs
 D:\SalesManagement\SalesManagement.Entities\obj\Debug\net9.0\SalesManagement.Entities.csproj.CoreCompileInputs.cache
+D:\SalesManagement\SalesManagement.Entities\obj\Debug\net9.0\SalesManagement.Entities.sourcelink.json
 D:\SalesManagement\SalesManagement.Entities\obj\Debug\net9.0\SalesManagement.Entities.dll
 D:\SalesManagement\SalesManagement.Entities\obj\Debug\net9.0\refint\SalesManagement.Entities.dll
 D:\SalesManagement\SalesManagement.Entities\obj\Debug\net9.0\SalesManagement.Entities.pdb

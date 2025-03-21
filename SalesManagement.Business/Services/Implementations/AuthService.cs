@@ -41,8 +41,7 @@ namespace SalesManagement.Business.Services.Implementations
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.Role.Name)
+                new Claim(ClaimTypes.Role, user.Role.Name),
             };
 
             var token = new JwtSecurityToken(

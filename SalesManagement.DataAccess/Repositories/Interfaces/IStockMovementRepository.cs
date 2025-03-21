@@ -11,8 +11,8 @@ namespace SalesManagement.DataAccess.Repositories.Interfaces
     {
         Task<StockMovement?> GetByIdAsync(int id);
         Task<IEnumerable<StockMovement>> GetAllAsync();
-        Task AddAsync(StockMovement stockMovement);
-        Task UpdateAsync(StockMovement stockMovement);
-        Task DeleteAsync(int id);
+        System.Threading.Tasks.Task AddAsync(StockMovement stockMovement);
+        System.Threading.Tasks.Task UpdateAsync(StockMovement stockMovement);
+        System.Threading.Tasks.Task DeleteAsync(int id);
     }
 }

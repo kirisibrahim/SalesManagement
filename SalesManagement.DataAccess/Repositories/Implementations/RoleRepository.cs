@@ -29,18 +29,18 @@ namespace SalesManagement.DataAccess.Repositories.Implementations
             return await _context.Roles.ToListAsync();
         }
 
-        public async Task AddAsync(Role role)
+        public async System.Threading.Tasks.Task AddAsync(Role role)
         {
             await _context.Roles.AddAsync(role);
         }
 
-        public async Task UpdateAsync(Role role)
+        public async System.Threading.Tasks.Task UpdateAsync(Role role)
         {
             _context.Roles.Update(role);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var role = await _context.Roles.FindAsync(id);
             if (role != null)

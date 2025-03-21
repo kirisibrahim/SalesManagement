@@ -231,6 +231,38 @@ namespace SalesManagement.DataAccess.Migrations
                     b.ToTable("Suppliers");
                 });
 
+            modelBuilder.Entity("SalesManagement.Entities.Models.TasksTask", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Durum")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TasksTasks");
+                });
+
             modelBuilder.Entity("SalesManagement.Entities.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -242,13 +274,10 @@ namespace SalesManagement.DataAccess.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
@@ -263,6 +292,21 @@ namespace SalesManagement.DataAccess.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("SalesManagement.Entities.Models.UserTask", b =>
+                {
+                    b.Property<int>("TaskId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TaskId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserTasks");
                 });
 
             modelBuilder.Entity("SalesManagement.Entities.Models.Product", b =>
@@ -323,6 +367,25 @@ namespace SalesManagement.DataAccess.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("SalesManagement.Entities.Models.UserTask", b =>
+                {
+                    b.HasOne("SalesManagement.Entities.Models.TasksTask", "TasksTask")
+                        .WithMany("UserTasks")
+                        .HasForeignKey("TaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SalesManagement.Entities.Models.User", "User")
+                        .WithMany("UserTasks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TasksTask");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SalesManagement.Entities.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -348,6 +411,16 @@ namespace SalesManagement.DataAccess.Migrations
             modelBuilder.Entity("SalesManagement.Entities.Models.Supplier", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("SalesManagement.Entities.Models.TasksTask", b =>
+                {
+                    b.Navigation("UserTasks");
+                });
+
+            modelBuilder.Entity("SalesManagement.Entities.Models.User", b =>
+                {
+                    b.Navigation("UserTasks");
                 });
 #pragma warning restore 612, 618
         }

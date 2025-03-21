@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SalesManagement.Business.DTOs;
 using SalesManagement.Business.Services.Interfaces;
+using SalesManagement.Entities.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -64,11 +65,13 @@ namespace SalesManagement.WebAPI.Controllers
 
             var claims = new[]
             {
-        new Claim(JwtRegisteredClaimNames.Sub, user.Username),
-        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-        new Claim(ClaimTypes.Name, user.Username),
-        new Claim(ClaimTypes.Role, role.Name) // Rol adı ekleniyor
-    };
+               new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+               new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+               new Claim(ClaimTypes.Name, user.Username),
+               new Claim(ClaimTypes.Role, role.Name), // Rol adı ekleniyor
+               new Claim("userId", user.Id.ToString()) // User ID'sini claim olarak ekliyoruz
+            };
+            Console.WriteLine($"User ID: {user.Id}");
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -82,6 +85,26 @@ namespace SalesManagement.WebAPI.Controllers
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        [HttpGet("user-info")]
+        public IActionResult GetUserInfo()
+        {
+            var username = User.FindFirst(ClaimTypes.Name)?.Value;
+            var roleName = User.FindFirst(ClaimTypes.Role)?.Value;
+            var userId = User.FindFirst("userId")?.Value; // "userId" claim'ini alıyoruz
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(roleName))
+            {
+                return Unauthorized("Kullanıcı bilgisi alınamadı.");
+            }
+
+            return Ok(new
+            {
+                Username = username,
+                RoleName = roleName,
+                UserId = userId // Kullanıcı ID'sini de dönüyoruz
+            });
         }
 
 

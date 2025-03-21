@@ -9,16 +9,20 @@ namespace SalesManagement.DataAccess.Configurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasKey(u => u.Id);
+
             builder.Property(u => u.Username)
                    .IsRequired()
                    .HasMaxLength(50);
-            builder.Property(u => u.PasswordHash)
-                   .IsRequired();
 
-            // İlişkiler
-            builder.HasOne(u => u.Role)  // Her kullanıcın bir rolü var
-                   .WithMany(r => r.Users)  // rollerin birden fazla kullanıcı olabilir
+            builder.Property(u => u.PasswordHash)
+                   .IsRequired()
+                   .HasMaxLength(500);
+
+            // Kullanıcı - Rol ilişkisi
+            builder.HasOne(u => u.Role)
+                   .WithMany(r => r.Users)
                    .HasForeignKey(u => u.RoleId);
+
         }
     }
 }

@@ -68,7 +68,7 @@ namespace SalesManagement.Business.Services.Implementations
             return _mapper.Map<StockMovementDto>(stockMovement);
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var stockMovement = await _unitOfWork.StockMovementRepository.GetByIdAsync(id);
             if (stockMovement == null)

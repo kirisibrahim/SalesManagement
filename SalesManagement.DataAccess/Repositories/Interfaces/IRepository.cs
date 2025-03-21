@@ -13,10 +13,11 @@ namespace SalesManagement.DataAccess.Repositories.Interfaces
         Task<T?> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
-        Task AddAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(int id);
+        System.Threading.Tasks.Task AddAsync(T entity);
+        System.Threading.Tasks.Task UpdateAsync(T entity);
+        System.Threading.Tasks.Task DeleteAsync(int id);
         Task<User> GetUserByUsernameAndPasswordAsync(string username, string passwordHash);
         Task<Role> GetRoleByNameAsync(string roleName);
+        Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> predicate);
     }
 }

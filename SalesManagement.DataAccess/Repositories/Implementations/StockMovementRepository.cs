@@ -29,18 +29,18 @@ namespace SalesManagement.DataAccess.Repositories.Implementations
             return await _context.StockMovements.ToListAsync();
         }
 
-        public async Task AddAsync(StockMovement stockMovement)
+        public async System.Threading.Tasks.Task AddAsync(StockMovement stockMovement)
         {
             await _context.StockMovements.AddAsync(stockMovement);
         }
 
-        public async Task UpdateAsync(StockMovement stockMovement)
+        public async System.Threading.Tasks.Task UpdateAsync(StockMovement stockMovement)
         {
             _context.StockMovements.Update(stockMovement);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var stockMovement = await _context.StockMovements.FindAsync(id);
             if (stockMovement != null)

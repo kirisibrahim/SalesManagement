@@ -30,18 +30,18 @@ namespace SalesManagement.DataAccess.Repositories.Implementations
             return await _context.Products.ToListAsync();
         }
 
-        public async Task AddAsync(Product product)
+        public async System.Threading.Tasks.Task AddAsync(Product product)
         {
             await _context.Products.AddAsync(product);
         }
 
-        public async Task UpdateAsync(Product product)
+        public async System.Threading.Tasks.Task UpdateAsync(Product product)
         {
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var product = await _context.Products.FindAsync(id);
             if (product != null)

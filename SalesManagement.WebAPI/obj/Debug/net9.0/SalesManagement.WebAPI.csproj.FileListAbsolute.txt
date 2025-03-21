@@ -145,8 +145,8 @@ D:\SalesManagement\SalesManagement.WebAPI\obj\Debug\net9.0\SalesManagement.WebAP
 D:\SalesManagement\SalesManagement.WebAPI\obj\Debug\net9.0\SalesManagement.WebAPI.AssemblyInfoInputs.cache
 D:\SalesManagement\SalesManagement.WebAPI\obj\Debug\net9.0\SalesManagement.WebAPI.AssemblyInfo.cs
 D:\SalesManagement\SalesManagement.WebAPI\obj\Debug\net9.0\SalesManagement.WebAPI.csproj.CoreCompileInputs.cache
-D:\SalesManagement\SalesManagement.WebAPI\obj\Debug\net9.0\SalesManagement.WebAPI.MvcApplicationPartsAssemblyInfo.cs
 D:\SalesManagement\SalesManagement.WebAPI\obj\Debug\net9.0\SalesManagement.WebAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\SalesManagement\SalesManagement.WebAPI\obj\Debug\net9.0\SalesManagement.WebAPI.sourcelink.json
 D:\SalesManagement\SalesManagement.WebAPI\obj\Debug\net9.0\scopedcss\bundle\SalesManagement.WebAPI.styles.css
 D:\SalesManagement\SalesManagement.WebAPI\obj\Debug\net9.0\staticwebassets.build.json
 D:\SalesManagement\SalesManagement.WebAPI\obj\Debug\net9.0\staticwebassets.development.json

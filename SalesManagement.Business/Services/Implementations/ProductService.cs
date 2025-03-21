@@ -68,7 +68,7 @@ namespace SalesManagement.Business.Services.Implementations
             return _mapper.Map<ProductDto>(product);
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var product = await _unitOfWork.ProductRepository.GetByIdAsync(id);
             if (product == null)

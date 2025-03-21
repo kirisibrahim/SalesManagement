@@ -9,6 +9,7 @@ D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.D
 D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.AssemblyInfoInputs.cache
 D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.AssemblyInfo.cs
 D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.csproj.CoreCompileInputs.cache
+D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.sourcelink.json
 D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesMan.CAA102E2.Up2Date
 D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\SalesManagement.DataAccess.dll
 D:\SalesManagement\SalesManagement.DataAccess\obj\Debug\net9.0\refint\SalesManagement.DataAccess.dll

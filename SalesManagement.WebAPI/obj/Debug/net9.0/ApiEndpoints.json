@@ -32,6 +32,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SalesManagement.WebAPI.Controllers.AuthController",
+    "Method": "GetUserInfo",
+    "RelativePath": "api/auth/user-info",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SalesManagement.WebAPI.Controllers.CategoryController",
     "Method": "GetAll",
     "RelativePath": "api/Category",
@@ -578,6 +588,153 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesManagement.API.Controllers.TasksTaskController",
+    "Method": "CreateTasksTaskAsync",
+    "RelativePath": "api/TasksTask",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tasksTaskDto",
+        "Type": "SalesManagement.Business.DTOs.TasksTaskDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesManagement.API.Controllers.TasksTaskController",
+    "Method": "GetAllTasksTasksAsync",
+    "RelativePath": "api/TasksTask",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesManagement.API.Controllers.TasksTaskController",
+    "Method": "UpdateTasksTaskAsync",
+    "RelativePath": "api/TasksTask/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateTasksTaskDto",
+        "Type": "SalesManagement.Business.DTOs.UpdateTasksTaskDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesManagement.API.Controllers.TasksTaskController",
+    "Method": "DeleteTasksTaskAsync",
+    "RelativePath": "api/TasksTask/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesManagement.API.Controllers.TasksTaskController",
+    "Method": "GetTasksTaskByIdAsync",
+    "RelativePath": "api/TasksTask/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SalesManagement.Business.DTOs.TasksTaskDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SalesManagement.API.Controllers.TasksTaskController",
+    "Method": "AssignUserToTasksTaskAsync",
+    "RelativePath": "api/TasksTask/{tasksTaskId}/assign/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tasksTaskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesManagement.API.Controllers.TasksTaskController",
+    "Method": "RemoveUserFromTask",
+    "RelativePath": "api/TasksTask/{tasksTaskId}/remove/{userId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tasksTaskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SalesManagement.API.Controllers.TasksTaskController",
+    "Method": "GetTasksByUserId",
+    "RelativePath": "api/TasksTask/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
         "Type": "System.Int32",
         "IsRequired": true
       }

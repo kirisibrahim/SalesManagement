@@ -69,15 +69,32 @@ namespace SalesManagement.Business.Services.Implementations
             return _mapper.Map<RoleDto>(role);
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var role = await _unitOfWork.RoleRepository.GetByIdAsync(id);
             if (role == null)
                 throw new KeyNotFoundException("Role not found.");
 
-            await _unitOfWork.RoleRepository.DeleteAsync(id);
+            // Rolü kullanan kullanıcıları bul
+            var usersWithRole = await _unitOfWork.UserRepository.GetWhereAsync(u => u.RoleId == id);
 
+            // Varsayılan Role ID'sini belirle (örneğin: 1 = "User")
+            int defaultRoleId = 1;
+
+            // Kullanıcıların RoleId'sini güncelle
+            foreach (var user in usersWithRole)
+            {
+                user.RoleId = defaultRoleId;
+                await _unitOfWork.UserRepository.UpdateAsync(user);
+            }
+
+            // Değişiklikleri kaydet
+            await _unitOfWork.CompleteAsync();
+
+            // Şimdi rolü güvenle silebiliriz
+            await _unitOfWork.RoleRepository.DeleteAsync(id);
             await _unitOfWork.CompleteAsync();
         }
+
     }
 }

@@ -10,6 +10,7 @@ D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Bus
 D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.AssemblyInfoInputs.cache
 D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.AssemblyInfo.cs
 D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.csproj.CoreCompileInputs.cache
+D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.sourcelink.json
 D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesMan.745B8478.Up2Date
 D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\SalesManagement.Business.dll
 D:\SalesManagement\SalesManagement.Business\obj\Debug\net9.0\refint\SalesManagement.Business.dll

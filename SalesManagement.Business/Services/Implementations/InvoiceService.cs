@@ -75,7 +75,7 @@ namespace SalesManagement.Business.Services.Implementations
             return _mapper.Map<InvoiceDto>(invoice);
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var invoice = await _unitOfWork.InvoiceRepository.GetByIdAsync(id);
             if (invoice == null)

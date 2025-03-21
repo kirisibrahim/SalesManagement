@@ -15,5 +15,7 @@ namespace SalesManagement.Business.Services.Interfaces
         Task<UserDto> CreateAsync(UserDto userDto);
         Task<UserDto> UpdateAsync(UserDto userDto);
         Task DeleteAsync(int id);
+        Task<UserDto> GetUserByIdAsync(int userId);
+
     }
 }

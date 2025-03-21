@@ -29,18 +29,18 @@ namespace SalesManagement.DataAccess.Repositories.Implementations
             return await _context.Invoices.ToListAsync();
         }
 
-        public async Task AddAsync(Invoice invoice)
+        public async System.Threading.Tasks.Task AddAsync(Invoice invoice)
         {
             await _context.Invoices.AddAsync(invoice);
         }
 
-        public async Task UpdateAsync(Invoice invoice)
+        public async System.Threading.Tasks.Task UpdateAsync(Invoice invoice)
         {
             _context.Invoices.Update(invoice);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var invoice = await _context.Invoices.FindAsync(id);
             if (invoice != null)

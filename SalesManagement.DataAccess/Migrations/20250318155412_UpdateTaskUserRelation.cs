@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SalesManagement.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class First : Migration
+    public partial class UpdateTaskUserRelation : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -71,14 +71,29 @@ namespace SalesManagement.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TasksTasks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    Durum = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TasksTasks", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -122,6 +137,30 @@ namespace SalesManagement.DataAccess.Migrations
                         name: "FK_Products_Suppliers_SupplierId",
                         column: x => x.SupplierId,
                         principalTable: "Suppliers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserTasks",
+                columns: table => new
+                {
+                    TaskId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserTasks", x => new { x.TaskId, x.UserId });
+                    table.ForeignKey(
+                        name: "FK_UserTasks_TasksTasks_TaskId",
+                        column: x => x.TaskId,
+                        principalTable: "TasksTasks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserTasks_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -217,6 +256,11 @@ namespace SalesManagement.DataAccess.Migrations
                 name: "IX_Users_RoleId",
                 table: "Users",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTasks_UserId",
+                table: "UserTasks",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -229,7 +273,7 @@ namespace SalesManagement.DataAccess.Migrations
                 name: "StockMovements");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "UserTasks");
 
             migrationBuilder.DropTable(
                 name: "Invoices");
@@ -238,13 +282,19 @@ namespace SalesManagement.DataAccess.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Roles");
+                name: "TasksTasks");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Suppliers");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
         }
     }
 }

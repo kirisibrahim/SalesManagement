@@ -19,28 +19,33 @@ namespace SalesManagement.DataAccess.Repositories.Implementations
             _context = context;
         }
 
-        public async Task<User> GetByIdAsync(int id)
-        {
-            return await _context.Users.FindAsync(id);
-        }
-
         public async Task<IEnumerable<User>> GetAllAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+                .Include(u => u.Role)  // Role bilgisini de yükle
+                .ToListAsync();
         }
 
-        public async Task AddAsync(User user)
+        public async Task<User> GetByIdAsync(int id)
+        {
+            return await _context.Users
+                .Include(u => u.Role)  // Role bilgisini de yükle
+                .FirstOrDefaultAsync(u => u.Id == id);
+        }
+
+
+        public async System.Threading.Tasks.Task AddAsync(User user)
         {
             await _context.Users.AddAsync(user);
         }
 
-        public async Task UpdateAsync(User user)
+        public async System.Threading.Tasks.Task UpdateAsync(User user)
         {
             _context.Users.Update(user);
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async System.Threading.Tasks.Task DeleteAsync(int id)
         {
             var user = await _context.Users.FindAsync(id);
             if (user != null)

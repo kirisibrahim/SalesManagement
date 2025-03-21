@@ -11,9 +11,9 @@ namespace SalesManagement.DataAccess.Repositories.Interfaces
     {
         Task<User> GetByIdAsync(int id);
         Task<IEnumerable<User>> GetAllAsync();
-        Task AddAsync(User user);
-        Task UpdateAsync(User user);
-        Task DeleteAsync(int id);
+        System.Threading.Tasks.Task AddAsync(User user);
+        System.Threading.Tasks.Task UpdateAsync(User user);
+        System.Threading.Tasks.Task DeleteAsync(int id);
         Task<User> GetUserByUsernameAndPasswordAsync(string username, string password);
     }
 }

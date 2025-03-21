@@ -11,7 +11,9 @@ namespace SalesManagement.DataAccess.Context
 {
     public class SalesManagementDbContext : DbContext
     {
-        public SalesManagementDbContext(DbContextOptions<SalesManagementDbContext> options) : base(options){}
+        public SalesManagementDbContext(DbContextOptions<SalesManagementDbContext> options) : base(options)
+        {
+        }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
@@ -20,11 +22,13 @@ namespace SalesManagement.DataAccess.Context
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<TasksTask> TasksTasks { get; set; }
+        public DbSet<UserTask> UserTasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(SalesManagementDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(SalesManagementDbContext).Assembly);  // Tüm konfigürasyonları uygulama
         }
     }
 }

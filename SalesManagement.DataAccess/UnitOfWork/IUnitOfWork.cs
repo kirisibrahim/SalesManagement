@@ -18,6 +18,7 @@ namespace SalesManagement.DataAccess.UnitOfWork
         IRepository<Invoice> InvoiceRepository { get; }
         IRepository<User> UserRepository { get; }
         IRepository<Role> RoleRepository { get; }
+        IRepository<TasksTask> TasksTaskRepository { get; }
 
         Task<int> CompleteAsync();
     }
