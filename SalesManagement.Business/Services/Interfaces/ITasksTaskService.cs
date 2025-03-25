@@ -1,5 +1,4 @@
-﻿// SalesManagement.Business/Services/Interfaces/ITasksTaskService.cs
-using SalesManagement.Business.DTOs;
+﻿using SalesManagement.Business.DTOs;
 using SalesManagement.Entities.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;

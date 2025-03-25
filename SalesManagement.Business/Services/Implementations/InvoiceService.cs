@@ -41,7 +41,6 @@ namespace SalesManagement.Business.Services.Implementations
 
         public async Task<InvoiceDto> CreateAsync(InvoiceDto invoiceDto)
         {
-            // Validation işlemi
             var validationResult = await _invoiceValidator.ValidateAsync(invoiceDto);
             if (!validationResult.IsValid)
             {
@@ -57,7 +56,6 @@ namespace SalesManagement.Business.Services.Implementations
 
         public async Task<InvoiceDto> UpdateAsync(InvoiceDto invoiceDto)
         {
-            // Validation işlemi
             var validationResult = await _invoiceValidator.ValidateAsync(invoiceDto);
             if (!validationResult.IsValid)
             {

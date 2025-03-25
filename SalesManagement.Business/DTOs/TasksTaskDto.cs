@@ -11,7 +11,7 @@ namespace SalesManagement.Business.DTOs
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTimeOffset CreatedDate { get; set; } = DateTimeOffset.UtcNow;
         public Durum Durum { get; set; }
         public List<int> UserIds { get; set; } = new List<int>();
     }

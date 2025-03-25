@@ -87,11 +87,7 @@ namespace SalesManagement.Business.Services.Implementations
                 user.RoleId = defaultRoleId;
                 await _unitOfWork.UserRepository.UpdateAsync(user);
             }
-
-            // Değişiklikleri kaydet
             await _unitOfWork.CompleteAsync();
-
-            // Şimdi rolü güvenle silebiliriz
             await _unitOfWork.RoleRepository.DeleteAsync(id);
             await _unitOfWork.CompleteAsync();
         }

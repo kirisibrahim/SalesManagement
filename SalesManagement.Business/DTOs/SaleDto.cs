@@ -12,7 +12,7 @@ namespace SalesManagement.Business.DTOs
         public int ProductId { get; set; }
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }
-        public DateTime SaleDate { get; set; } = DateTime.UtcNow;
+        public DateTimeOffset SaleDate { get; set; } = DateTimeOffset.UtcNow;
         public int? InvoiceId { get; set; }
     }
 }

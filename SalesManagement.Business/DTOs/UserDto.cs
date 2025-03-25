@@ -1,4 +1,6 @@
-﻿namespace SalesManagement.Business.DTOs
+﻿using Microsoft.AspNetCore.Http;
+
+namespace SalesManagement.Business.DTOs
 {
     public class UserDto
     {
@@ -7,7 +9,7 @@
         public string PasswordHash { get; set; } = string.Empty;
         public int RoleId { get; set; }
         public RoleDto Role { get; set; } = new RoleDto(); // null dönmemesi lazım ondan varsayılan değer atadıkk.
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTimeOffset CreatedDate { get; set; } = DateTimeOffset.UtcNow;
         public string? RoleName { get; set; }
 
     }

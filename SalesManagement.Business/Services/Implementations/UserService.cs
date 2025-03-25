@@ -26,8 +26,6 @@ namespace SalesManagement.Business.Services.Implementations
         public async Task<IEnumerable<UserDto>> GetAllAsync()
         {
             var users = await _unitOfWork.UserRepository.GetAllAsync();
-
-            // Kullanıcıların her birini dönüştürüp RoleName'i ekleyelim
             var userDtos = _mapper.Map<IEnumerable<UserDto>>(users);
 
             foreach (var userDto in userDtos)
@@ -65,10 +63,10 @@ namespace SalesManagement.Business.Services.Implementations
 
             var user = _mapper.Map<User>(userDto);
 
-            // Eğer kullanıcı rolü belirlenmemişse, varsayılan olarak "User" rolünü ata
+            // Eğer kullanıcı rolü belirlenmemişse, varsayılan olarak "Admin" rolünü ata
             if (user.RoleId == 0)
             {
-                var defaultRole = await _unitOfWork.RoleRepository.GetRoleByNameAsync("User");
+                var defaultRole = await _unitOfWork.RoleRepository.GetRoleByNameAsync("Admin");
                 if (defaultRole != null)
                     user.RoleId = defaultRole.Id; // Varsayılan rolü ata
             }
@@ -78,13 +76,9 @@ namespace SalesManagement.Business.Services.Implementations
                 if (role == null)
                     throw new NotFoundException("Rol bulunamadı."); // Eğer verilen RoleId yanlışsa hata fırlat
             }
-
             await _unitOfWork.UserRepository.AddAsync(user);
             await _unitOfWork.CompleteAsync();
-
-            // Kullanıcı DTO'sunu oluştur
             var createdUserDto = _mapper.Map<UserDto>(user);
-
             // Kullanıcının rolünü veritabanından çek ve RoleName'i ata
             var assignedRole = await _unitOfWork.RoleRepository.GetByIdAsync(user.RoleId);
             if (assignedRole != null)
@@ -92,10 +86,6 @@ namespace SalesManagement.Business.Services.Implementations
 
             return createdUserDto;
         }
-
-
-
-
         public async Task<UserDto> UpdateAsync(UserDto userDto)
         {
             var validationResult = await _userValidator.ValidateAsync(userDto);
@@ -132,7 +122,6 @@ namespace SalesManagement.Business.Services.Implementations
             // Eğer user.Role null ise, hata mesajı döndür
             if (user.Role == null)
                 throw new NotFoundException("Kullanıcının rolü bulunamadı.");
-
             // Kullanıcı bilgilerini ve rolünü al
             return new UserDto
             {

@@ -1,4 +1,6 @@
-﻿namespace SalesManagement.Entities.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SalesManagement.Entities.Models
 {
     public class User
     {
@@ -6,7 +8,7 @@
         public string Username { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
         public int RoleId { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTimeOffset CreatedDate { get; set; } = DateTimeOffset.UtcNow;
         public Role Role { get; set; }
         public ICollection<UserTask> UserTasks { get; set; } = new List<UserTask>();
 

@@ -10,8 +10,10 @@ namespace SalesManagement.Business.DTOs
     {
         public int Id { get; set; }
         public string InvoiceNumber { get; set; } = string.Empty;
-        public DateTime IssueDate { get; set; } = DateTime.UtcNow;
+        public DateTimeOffset IssueDate { get; set; } = DateTimeOffset.UtcNow;
         public decimal TotalAmount { get; set; }
-
+        public int? CustomerId { get; set; }
+        public List<SaleDto>? Sales { get; set; }
     }
+
 }

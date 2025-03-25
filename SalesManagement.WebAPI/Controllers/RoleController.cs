@@ -17,7 +17,6 @@ namespace SalesManagement.WebAPI.Controllers
             _roleService = roleService;
         }
 
-        // GET api/role
         [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
@@ -26,7 +25,6 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok(roles);
         }
 
-        // GET api/role/{id}
         [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
@@ -37,7 +35,6 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok(role);
         }
 
-        // POST api/role
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] RoleDto roleDto)
@@ -49,7 +46,6 @@ namespace SalesManagement.WebAPI.Controllers
             return CreatedAtAction(nameof(GetById), new { id = createdRole.Id }, createdRole);
         }
 
-        // PUT api/role/{id}
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] RoleDto roleDto)
@@ -61,7 +57,6 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok(updatedRole);
         }
 
-        // DELETE api/role/{id}
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

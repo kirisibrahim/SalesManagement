@@ -20,7 +20,6 @@ namespace SalesManagement.Business.Services.Implementations
             _mapper = mapper;
         }
 
-        // 1. Yeni Görev Oluşturma
         public async Task<TasksTaskDto> CreateTasksTaskAsync(TasksTaskDto tasksTaskDto)
         {
             var entity = _mapper.Map<TasksTask>(tasksTaskDto);
@@ -28,7 +27,6 @@ namespace SalesManagement.Business.Services.Implementations
             await _repository.AddAsync(entity);
             await _repository.SaveChangesAsync();
 
-            // Kullanıcıları ekleme
             foreach (var userId in tasksTaskDto.UserIds)
             {
                 if (!entity.UserTasks.Any(ut => ut.UserId == userId))
@@ -37,11 +35,10 @@ namespace SalesManagement.Business.Services.Implementations
                 }
             }
 
-            await _repository.SaveChangesAsync(); // Kullanıcıları ekledikten sonra kaydet
+            await _repository.SaveChangesAsync();
             return _mapper.Map<TasksTaskDto>(entity);
         }
 
-        // 2. Görev Güncelleme
         public async Task<bool> UpdateTasksTaskAsync(int id, UpdateTasksTaskDto updateDto)
         {
             var entity = await _repository.GetByIdWithUserTasksAsync(id);
@@ -52,7 +49,6 @@ namespace SalesManagement.Business.Services.Implementations
             entity.Description = updateDto.Description;
             entity.Durum = updateDto.Durum;
 
-            // Kullanıcıları ekleme
             foreach (var userId in updateDto.UserIds)
             {
                 if (!entity.UserTasks.Any(ut => ut.UserId == userId))
@@ -65,7 +61,6 @@ namespace SalesManagement.Business.Services.Implementations
             return await _repository.SaveChangesAsync();
         }
 
-        // 3. Görev Silme
         public async Task<bool> DeleteTasksTaskAsync(int id)
         {
             var entity = await _repository.GetByIdAsync(id);
@@ -76,21 +71,18 @@ namespace SalesManagement.Business.Services.Implementations
             return await _repository.SaveChangesAsync();
         }
 
-        // 4. Görevleri Listeleme
         public async Task<IEnumerable<TasksTaskDto>> GetAllTasksTasksAsync()
         {
             var list = await _repository.GetAllWithUserTasksAsync();
             return _mapper.Map<IEnumerable<TasksTaskDto>>(list);
         }
 
-        // 5. Görevi ID ile Getirme
         public async Task<TasksTaskDto> GetTasksTaskByIdAsync(int id)
         {
             var entity = await _repository.GetByIdWithUserTasksAsync(id);
             return _mapper.Map<TasksTaskDto>(entity);
         }
 
-        // 6. Kullanıcı Atama
         public async Task<bool> AssignUserToTasksTaskAsync(int tasksTaskId, int userId)
         {
             var entity = await _repository.GetByIdWithUserTasksAsync(tasksTaskId);
@@ -110,7 +102,6 @@ namespace SalesManagement.Business.Services.Implementations
             var entity = await _repository.GetByIdWithUserTasksAsync(tasksTaskId);
             if (entity == null)
             {
-                // Eğer görev bulunamazsa, false döner
                 return false;
             }
 
@@ -118,7 +109,6 @@ namespace SalesManagement.Business.Services.Implementations
             var userTask = entity.UserTasks.FirstOrDefault(ut => ut.UserId == userId);
             if (userTask == null)
             {
-                // Eğer kullanıcı görevde yoksa, işlem yapma
                 return false;
             }
 

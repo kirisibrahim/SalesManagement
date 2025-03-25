@@ -17,7 +17,6 @@ namespace SalesManagement.WebAPI.Controllers
             _supplierService = supplierService;
         }
 
-        // GET: api/supplier
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -25,7 +24,6 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok(suppliers);
         }
 
-        // GET: api/supplier/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -35,7 +33,6 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok(supplier);
         }
 
-        // POST: api/supplier
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] SupplierDto supplierDto)
         {
@@ -46,7 +43,6 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok();
         }
 
-        // PUT: api/supplier/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] SupplierDto supplierDto)
         {
@@ -60,7 +56,6 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok();
         }
 
-        // DELETE: api/supplier/{id}
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

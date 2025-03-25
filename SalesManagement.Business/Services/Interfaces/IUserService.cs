@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using SalesManagement.Business.DTOs;
 
 namespace SalesManagement.Business.Services.Interfaces
@@ -16,6 +17,5 @@ namespace SalesManagement.Business.Services.Interfaces
         Task<UserDto> UpdateAsync(UserDto userDto);
         Task DeleteAsync(int id);
         Task<UserDto> GetUserByIdAsync(int userId);
-
     }
 }

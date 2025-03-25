@@ -18,14 +18,17 @@ namespace SalesManagement.DataAccess.Configurations
             builder.Property(p => p.Description)
                    .HasMaxLength(500);
 
-            // İlişkiler
             builder.HasOne(p => p.Category)
                    .WithMany(c => c.Products)
                    .HasForeignKey(p => p.CategoryId)
-                   .OnDelete(DeleteBehavior.Cascade);  // dikkat!! kategoriyi silersek kategoriye ait ürünler de silinir, delete işlemini admin yapabilir...
+                   .OnDelete(DeleteBehavior.SetNull);
 
-            // dizinler
-            builder.HasIndex(p => p.Name).IsUnique();  // ürün adı benzersiz olmalı
+            builder.HasOne(p => p.Supplier)
+                   .WithMany(s => s.Products)
+                   .HasForeignKey(p => p.SupplierId)
+                   .OnDelete(DeleteBehavior.SetNull);
+
+            builder.HasIndex(p => p.Name).IsUnique();
         }
     }
 }

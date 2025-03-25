@@ -13,19 +13,19 @@ namespace SalesManagement.Business.Validators
         public TasksTaskValidator()
         {
             RuleFor(x => x.Title)
-                        .NotEmpty().WithMessage("Title is required.")
-                        .Length(3, 100).WithMessage("Title must be between 3 and 100 characters.");
+                 .NotEmpty().WithMessage("Başlık booş olamaz.")
+                 .Length(3, 100).WithMessage("Başlıkm 3 ila 100 karakter arasında olmalı.");
 
             RuleFor(x => x.Description)
-                .NotEmpty().WithMessage("Description is required.")
-                .Length(10, 500).WithMessage("Description must be between 10 and 500 characters.");
+                .NotEmpty().WithMessage("Açıklama boş olamaz.")
+                .Length(10, 500).WithMessage("Açıklama 5 ila 500 karakter arasında olmalı.");
 
             RuleFor(x => x.Durum)
-                .IsInEnum().WithMessage("Invalid status.");
+                .IsInEnum().WithMessage("Geçersiz durum");
 
             RuleFor(x => x.UserIds)
-                .NotEmpty().WithMessage("At least one user must be assigned to the task.")
-                .Must(userIds => userIds.All(id => id > 0)).WithMessage("User IDs must be greater than 0.");
+                .NotEmpty().WithMessage("Göreve en az bir kullanıcı atanmalıdır.")
+                .Must(userIds => userIds.All(id => id > 0)).WithMessage("User Id 0 dan büyük olmalı.");
         }
     }
 }

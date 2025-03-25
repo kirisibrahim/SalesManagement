@@ -13,14 +13,13 @@ namespace SalesManagement.Entities.Models
         public string Barcode { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public int StockQuantity { get; set; }
-        public int CategoryId { get; set; }
-        public int SupplierId { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdatedDate { get; set; }
+        public int? CategoryId { get; set; }
+        public int? SupplierId { get; set; }
+        public DateTimeOffset CreatedDate { get; set; } = DateTimeOffset.UtcNow;
+        public DateTimeOffset? UpdatedDate { get; set; }
 
         public Category? Category { get; set; }
         public Supplier? Supplier { get; set; }
-        public ICollection<StockMovement>? StockMovements { get; set; }
         public string Description { get; set; } = string.Empty;
         public required ICollection<Sale> Sales { get; set; }
     }

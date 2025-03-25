@@ -13,10 +13,10 @@ namespace SalesManagement.Business.DTOs
         public string Barcode { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public int StockQuantity { get; set; }
-        public int CategoryId { get; set; }
-        public int SupplierId { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdatedDate { get; set; }
+        public int? CategoryId { get; set; }
+        public int? SupplierId { get; set; }
+        public DateTimeOffset CreatedDate { get; set; } = DateTimeOffset.UtcNow;
+        public DateTimeOffset? UpdatedDate { get; set; }
         public string Description { get; set; } = string.Empty;
     }
 }

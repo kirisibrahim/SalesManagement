@@ -9,7 +9,6 @@ namespace SalesManagement.Business.Exceptions
     public class NotFoundException : Exception
     {
         public NotFoundException(string message) : base(message) { }
-        
-        // Burayla biraz daha ilgilinmek lazım :)
+       
     }
 }

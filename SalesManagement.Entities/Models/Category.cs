@@ -10,8 +10,8 @@ namespace SalesManagement.Entities.Models
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdatedDate { get; set; }
+        public DateTimeOffset CreatedDate { get; set; } = DateTimeOffset.UtcNow;
+        public DateTimeOffset? UpdatedDate { get; set; }
 
         public ICollection<Product>? Products { get; set; }
     }

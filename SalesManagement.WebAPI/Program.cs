@@ -38,22 +38,22 @@ builder.Services.AddValidatorsFromAssemblyContaining<InvoiceValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<ProductValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<RoleValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<SaleValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<StockMovementValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<SupplierValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<UserValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<TasksTaskValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<UpdateTasksTaskValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CustomerValidator>();
 
 // Servisler
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
-builder.Services.AddScoped<ISaleService, SaleService>();
-builder.Services.AddScoped<IStockMovementService, StockMovementService>();
+builder.Services.AddScoped<ISaleService, SaleService>();;
 builder.Services.AddScoped<ISupplierService, SupplierService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ITasksTaskService, TasksTaskService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 
 // Repository'ler
@@ -62,10 +62,10 @@ builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<ISaleRepository, SaleRepository>();
-builder.Services.AddScoped<IStockMovementRepository, StockMovementRepository>();
 builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITasksTaskRepository, TasksTaskRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 // UnitOfWork
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

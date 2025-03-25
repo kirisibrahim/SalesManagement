@@ -1,5 +1,4 @@
-﻿// SalesManagement.DataAccess/Repositories/Interfaces/ITasksTaskRepository.cs
-using SalesManagement.Entities.Models;
+﻿using SalesManagement.Entities.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

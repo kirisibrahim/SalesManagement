@@ -3,6 +3,7 @@ using SalesManagement.Business.Services.Interfaces;
 using SalesManagement.Business.DTOs;
 using System.Threading.Tasks;
 using SalesManagement.Business.Services.Implementations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SalesManagement.WebAPI.Controllers
 {
@@ -17,7 +18,6 @@ namespace SalesManagement.WebAPI.Controllers
             _productService = productService;
         }
 
-        // GET: api/product
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -25,7 +25,6 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok(products);
         }
 
-        // GET: api/product/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -35,7 +34,6 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok(product);
         }
 
-        // POST: api/product
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ProductDto productDto)
         {
@@ -46,7 +44,6 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok();
         }
 
-        // PUT: api/product/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ProductDto productDto)
         {
@@ -60,7 +57,7 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok();
         }
 
-        // DELETE: api/product/{id}
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -1,5 +1,4 @@
-﻿// SalesManagement.DataAccess/Configurations/TasksTaskConfiguration.cs
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SalesManagement.Entities.Models;
 

@@ -12,7 +12,6 @@ namespace SalesManagement.Entities.Models
         public TasksTask TasksTask { get; set; }
 
         public int UserId { get; set; }
-        // Kullanıcı modelimizin adı zaten mevcut. Örneğin: SalesManagement.Entities.Models.User
         public User User { get; set; }
     }
 }

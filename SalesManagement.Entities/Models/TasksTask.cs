@@ -6,7 +6,7 @@ namespace SalesManagement.Entities.Models
         public int Id { get; set; }
         public string Title { get; set; }      // Görev başlığı
         public string Description { get; set; } // Görev açıklaması
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTimeOffset CreatedDate { get; set; } = DateTimeOffset.UtcNow;
         public ICollection<UserTask> UserTasks { get; set; } = new List<UserTask>();
         public Durum Durum { get; set; } = Durum.Pending;
 

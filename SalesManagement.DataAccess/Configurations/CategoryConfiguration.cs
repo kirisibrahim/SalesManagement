@@ -19,7 +19,7 @@ namespace SalesManagement.DataAccess.Configurations
                    .HasForeignKey(p => p.CategoryId);
 
             // dizinler
-            builder.HasIndex(c => c.Name).IsUnique();  // kategori ismi uniq olmalı
+            builder.HasIndex(c => c.Name).IsUnique();
         }
     }
 }

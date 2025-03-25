@@ -1,5 +1,4 @@
-﻿// SalesManagement.API/Controllers/TasksTaskController.cs
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SalesManagement.Business.DTOs;
@@ -42,8 +41,6 @@ namespace SalesManagement.API.Controllers
             return Ok(createdTask); // Kaynağa erişim için url sağlamasına şuanlık ihtiyaç yokk
         }
 
-
-        // Görev güncelleme
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateTasksTaskAsync(int id, [FromBody] UpdateTasksTaskDto updateTasksTaskDto)
         {
@@ -87,7 +84,7 @@ namespace SalesManagement.API.Controllers
                 return NotFound();
             }
 
-            return task;  // Doğru task bilgisi döndürülüyor
+            return task;
         }
 
         [HttpGet("user/{userId}")]

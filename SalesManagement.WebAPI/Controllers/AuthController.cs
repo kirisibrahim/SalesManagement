@@ -24,7 +24,6 @@ namespace SalesManagement.WebAPI.Controllers
             _configuration = configuration;
         }
 
-        // Kullanıcı Girişi
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
@@ -49,15 +48,10 @@ namespace SalesManagement.WebAPI.Controllers
             return Ok(new { newToken });
         }
 
-        // JWT Token Oluşturma
         private string GenerateJwtToken(UserDto user)
         {
             var jwtSettings = _configuration.GetSection("JwtSettings");
-
-            // Kullanıcının rolünü al
-            var role = user.Role; // UserDto'da Role özelliğini atadığınızdan emin olun
-
-            // Rol null ise bir hata verebilir, bu nedenle kontrol yapalım
+            var role = user.Role;
             if (role == null)
             {
                 throw new InvalidOperationException("User role is missing");
@@ -69,10 +63,9 @@ namespace SalesManagement.WebAPI.Controllers
                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                new Claim(ClaimTypes.Name, user.Username),
                new Claim(ClaimTypes.Role, role.Name), // Rol adı ekleniyor
-               new Claim("userId", user.Id.ToString()) // User ID'sini claim olarak ekliyoruz
+               new Claim("userId", user.Id.ToString()), // userid claim ekleme
+               new Claim("roleId", role.Id.ToString()) // roleid claim ekleme
             };
-            Console.WriteLine($"User ID: {user.Id}");
-
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
@@ -92,7 +85,8 @@ namespace SalesManagement.WebAPI.Controllers
         {
             var username = User.FindFirst(ClaimTypes.Name)?.Value;
             var roleName = User.FindFirst(ClaimTypes.Role)?.Value;
-            var userId = User.FindFirst("userId")?.Value; // "userId" claim'ini alıyoruz
+            var userId = User.FindFirst("userId")?.Value;
+            var roleId = User.FindFirst("roleId")?.Value;
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(roleName))
             {
@@ -103,7 +97,8 @@ namespace SalesManagement.WebAPI.Controllers
             {
                 Username = username,
                 RoleName = roleName,
-                UserId = userId // Kullanıcı ID'sini de dönüyoruz
+                UserId = userId,
+                RoleId = roleId
             });
         }
 
